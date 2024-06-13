@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cap'Chat</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/views/captcha.js" defer></script>
+</head>
+
+<body>
+    <h1>Cap'Chat</h1>
+    <div id="images">
+        <% images.forEach((image, index) => { %>
+            <img src="<%= image.src %>" data-id="<%= image.id %>" class="captcha-image">
+            <p><%= indices[index] %></p> 
+        <% }) %>
+    </div>
+    <div id="timer">Temps restant: <span id="time">30</span>s</div>
+    <form id="captchaForm" method="post">
+        <input type="hidden" name="selectedImageId" id="selectedImageId">
+    </form>
+</body>
+
+</html>
