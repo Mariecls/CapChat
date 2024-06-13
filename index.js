@@ -10,7 +10,7 @@ const PORT = 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'CapChat', 'public')));
 
 app.set('views', path.join(__dirname, 'CapChat', 'views'));
 app.set('view engine', 'ejs');
@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
 
 app.get('/captcha', (req, res) => {
     try {
-        const neutresDir = path.join(__dirname, 'CapChat', 'images', 'neutres');
-        const singuliersDir = path.join(__dirname, 'CapChat', 'images', 'singuliers');
+        const neutresDir = path.join(__dirname, 'CapChat', 'public', 'images', 'neutres');
+        const singuliersDir = path.join(__dirname, 'CapChat', 'public', 'images', 'singuliers');
 
         console.log('Neutres directory:', neutresDir);
         console.log('Singuliers directory:', singuliersDir);
@@ -46,11 +46,11 @@ app.get('/captcha', (req, res) => {
         const selectedIndex = singulieres.indexOf(selectedSinguliere);
 
         const images = selectedNeutres.map((img, index) => ({
-            src: `/CapChat/images/neutres/${img}`,
+            src: `/images/neutres/${img}`,
             id: `neutre-${index}`
         }));
         images.push({
-            src: `/CapChat/images/singuliers/${selectedSinguliere}`,
+            src: `/images/singuliers/${selectedSinguliere}`,
             id: 'singuliers'
         });
 
