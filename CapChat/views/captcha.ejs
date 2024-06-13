@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Cap'Chat</title>
-    <!-- Ici t'vais redirigé vers le mauvais dossier -->
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <script src="../public/js/captcha.js" defer></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/captcha.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +17,7 @@
         <% }) %>
     </div>
     <div id="timer">Temps restant: <span id="time">30</span>s</div>
-    <form id="captchaForm" method="post">
+    <form id="captchaForm" method="post" action="/captcha">
         <input type="hidden" name="selectedImageId" id="selectedImageId">
     </form>
 </body>

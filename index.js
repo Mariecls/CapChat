@@ -47,7 +47,6 @@ app.get('/captcha', (req, res) => {
         const selectedSinguliere = singulieres[Math.floor(Math.random() * singulieres.length)];
         const selectedIndex = singulieres.indexOf(selectedSinguliere);
 
-        // j'ai refait le chemin proprement, car elle pointait sur le mauvais dossier
         const images = selectedNeutres.map((img, index) => ({
             src: `/images/neutres/${img}`,
             id: `neutre-${index}`
