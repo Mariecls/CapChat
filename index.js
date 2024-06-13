@@ -10,7 +10,8 @@ const PORT = 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'CapChat', 'public')));
+app.use(express.static(path.join(__dirname, 'CapChat', 'public'))); // ajout de CapChat/public comme dossier statique
+// cette ligne permet de dire à express que le dossier CapChat/public contient des fichiers statiques
 
 app.set('views', path.join(__dirname, 'CapChat', 'views'));
 app.set('view engine', 'ejs');
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/captcha', (req, res) => {
     try {
+        // ajout de public dans le chemin des dossiers
         const neutresDir = path.join(__dirname, 'CapChat', 'public', 'images', 'neutres');
         const singuliersDir = path.join(__dirname, 'CapChat', 'public', 'images', 'singuliers');
 
@@ -45,6 +47,7 @@ app.get('/captcha', (req, res) => {
         const selectedSinguliere = singulieres[Math.floor(Math.random() * singulieres.length)];
         const selectedIndex = singulieres.indexOf(selectedSinguliere);
 
+        // j'ai refait le chemin proprement, car elle pointait sur le mauvais dossier
         const images = selectedNeutres.map((img, index) => ({
             src: `/images/neutres/${img}`,
             id: `neutre-${index}`
